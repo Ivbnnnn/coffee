@@ -1,3 +1,433 @@
-.fsec{
+:root{
+    --pc:#415167;
+    --acf:#C7A17A;
+    --acs:#F9F5E8;
+    --dg:#151D28;
+    --lg:#EDF0F5;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+/* Способ 1: Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+/* Способ 2: Загрузка и импорт */
+@font-face {
+ font-family: 'CustomFont';
+ src: url('../assets/fonts/custom-font.woff2') format('woff2');
+ font-weight: 400;
+ font-display: swap;
+}
+/* Применение шрифтов */
+body {
+    background-color: var(--lg);
+ font-family: 'Inter', system-ui, sans-serif;
+}
+header{
+    height: 120vh;
+}
+.background__img{
+    /* display: none; */
+    position: absolute;
+    z-index: -10;
+    padding-left: 30vw;
+}
+a{
+    text-decoration: none;
+    color:inherit
+}
+nav{
+    color:var(--lg);
+    background-color:var(--pc);
+    display: flex;
+    flex-direction: row;
+    gap:40px;
+    padding: 40px;
+    height: fit-content;
+}
+nav ul{
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    width: 100%;
+}
+.nav__item:hover{
+    color:var(--acf)
+}
+.nav__link{
+    height: fit-content;
+}
+.nav__link:hover{
+    color:var(--acf)
+}
+.header__phrase{
+    display: flex;
+    flex-direction: column;
+ 
+    position: absolute;
+    margin-top: 45vh;
+    margin-left: 14vw;
+    color:#415167;
+    font-weight: 1500;
+    font-size: 4em;
     
+}
+.header__phrase--rev{
+    color:var(--acf);
+    
+}
+.header__logo{
+    position: absolute;
+    margin-left: 14vw;
+    margin-top: 15vh;
+}
+
+.section--first{
+    text-align: center;
+
+}
+.section--first h3{
+    color: var(--pc);
+    font-weight: 500;
+    font-size: 20px;
+}
+.section--first h2{
+    color:var(--pc);
+    font-weight: 100000;
+    font-size: 40px;
+
+    padding-top: 1vh;
+}
+.section--first ul{
+    list-style: none;
+    margin: 15vh;
+    margin-top: 10vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.section--first ul li{
+    padding: 2vw;
+}
+
+.second--section{
+    text-align: center;
+    background: linear-gradient(
+    to right,
+    var(--pc) 0%,
+    var(--pc) 25%,
+    var(--lg) 25%,
+    var(--lg) 100%
+  );
+}
+.second--section h3{
+    color: var(--pc);
+    font-weight: 500;
+    font-size: 20px;
+}
+.second--section h2{
+    color:var(--pc);
+    font-weight: 100000;
+    font-size: 40px;
+
+    padding-top: 1vh;
+}
+
+.second--section .swiper{
+    margin: 5vw;
+    padding-bottom: 4vh;
+    align-self: center;
+    justify-self: center;
+    gap:3vw;
+    display: grid;
+    grid-template-areas: 
+    "a b"
+    "c d";
+}
+.second--section .swiper .item{
+    display: flex;
+    background: white;
+    border: 4px var(--acf) solid;
+    padding: 4px;
+    border-radius: 12px;
+    width: max-content;
+}
+.second--section .swiper .item img{
+    background-color: #d5d7dc;
+}
+.second--section .swiper .item .item-description{
+    padding: 3vw;
+    text-align: left;
+}
+.second--section .swiper .item .price{
+    color:var(--acf);
+    font-size: 25px;
+}
+.second--section .swiper .item .name{
+    color:black;
+    font-size: 30px;
+    font-weight: 10000;
+    padding-bottom: 3vh;
+}
+.second--section .swiper .item button{
+    background-color: inherit;
+    border: none;
+    border-radius: 50px;
+    width: 5vw;
+    height: 3vh;
+    color: var(--pc);
+    font-size: 15px;
+    margin-top: 3vh;
+    cursor: pointer;
+}
+.second--section .swiper .item button:hover {
+    background-color: var(--pc);
+    color: white;
+    transform: scale(1.05);
+    transition: all 0.2s ease-in-out;
+}
+
+.second--section .swiper .item .ac{
+    background-color: var(--acf);
+    border: 4px inherit solid;
+    width: 9vw;
+    height: 4vh;
+    margin-right: 2vw;
+    color:white;
+}
+
+
+
+.third--section{
+    text-align: center;
+    background: linear-gradient(
+    to left,
+    var(--lg) 0%,
+    var(--lg) 25%,
+    #e5e7ec 25%,
+    #e5e7ec 100%
+    
+  );
+}
+.third--section{
+    padding: 30px;
+    text-align: center;
+}
+.third--section h3{
+    color: var(--pc);
+    font-weight: 500;
+    font-size: 20px;
+    padding-top: 5vh;
+}
+.third--section h2{
+    color:var(--pc);
+    font-weight: 100000;
+    font-size: 40px;
+    padding-top: 1vh;
+}
+.accordion{
+    text-align: left;
+    display: flex;
+    background: linear-gradient(
+        to right,
+    #e5e7ec 0%,
+    #e5e7ec 25%,
+    white 25%,
+    white 100%
+    );
+
+    margin: 10vh 10vw 0 10vw;
+}
+.accordion img{
+    padding-top: 5vh;
+    padding-right: 7vw;
+}
+.accordion .price{
+    padding-top: 5vh;
+    color:var(--acf);
+    font-size: 25px;
+
+}
+.accordion .name{
+    color:black;
+    font-size: 30px;
+    font-weight: 10000;
+    padding-bottom: 3vh;
+}
+.accordion__item button{
+    background-color: inherit;
+    border: none;
+    border-radius: 50px;
+    width: 5vw;
+    height: 3vh;
+    color: var(--pc);
+    font-size: 15px;
+    margin-top: 13vh;
+
+    cursor: pointer;
+}
+.accordion__item button:hover {
+    background-color: var(--pc);
+    color: white;
+    transform: scale(1.05);
+    transition: all 0.2s ease-in-out;
+}
+.accordion__item button.ac:hover {
+    background-color: var(--pc);
+    color: white;
+    transform: scale(1.05);
+    transition: all 0.2s ease-in-out;
+}
+.accordion__item button.ac{
+    background-color: var(--acf);
+    border: 4px inherit solid;
+    width: 9vw;
+    height: 4vh;
+    margin-right: 10vw;
+    color:white;
+}
+.accordion__item{
+    display: none;
+}
+.accordion__item.show{
+    display: flex;
+}
+.slide-buttons{
+    margin-left: 3vw;
+    display: grid;
+    width: 15vw;
+    grid-area: 
+    "a"
+    "b"
+    "c";
+}
+.slide-buttons button{
+    background-color: #e2e5ea;
+    cursor: pointer;
+    color:#41516763;
+    font-weight: 6500;
+    font-size: 30px;
+    border-left: 1px rgb(134, 134, 134) solid ;
+    border: none;
+}
+.slide-buttons button:hover{
+    background-color: var(--pc);
+    color: white;
+    transform: scale(1.05);
+    transition: all 0.2s ease-in-out;
+}
+.slide-buttons button:first-child{
+    background-color: white !important;
+    cursor: pointer;
+    color:var(--pc);
+    border-left: 1px rgb(198, 198, 198) solid ;
+}
+
+.fourth--section{
+    padding: 5vw;
+    text-align: center;
+    background: linear-gradient(
+    to left,
+    var(--pc) 0%,
+    var(--pc) 25%,
+    var(--lg) 25%,
+    var(--lg) 100%
+  );
+}
+.fourth--section h3{
+    color: var(--pc);
+    font-weight: 500;
+    font-size: 20px;
+
+}
+.fourth--section h2{
+    color:var(--pc);
+    font-weight: 100000;
+    font-size: 40px;
+    margin-bottom: 6vh;
+    padding-top: 1vh;
+}
+
+.fourth--section .swiper{
+    align-self: center;
+    justify-self: center;
+    gap:3vw;
+    display: grid;
+    grid-template-areas: 
+    "a b c";
+}
+.fourth--section .swiper .item{
+    display: flex;
+    flex-direction: column;
+    background: white;
+    
+    border-radius: 12px;
+    text-align: left;    
+}
+.fourth--section .swiper .item img{
+    background-color: #d5d7dc;
+}
+.fourth--section .swiper .item .item-description{
+    margin-left: 2vw;
+    padding: 1vw;
+    text-align: left;
+}
+.fourth--section .swiper .item .price{
+    margin-top: 3vh;
+    margin-left: 3vw;
+    padding: 0vw;
+    color:var(--acf);
+    font-size: 25px;
+}
+.fourth--section .swiper .item .name{
+    color:black;
+    font-size: 30px;
+    font-weight: 10000;
+    padding-bottom: 3vh;
+    padding: 1vw;
+    margin-left: 2vw;
+}
+.fourth--section .buttons{
+    display: flex;
+}
+.fourth--section .swiper .item button{
+    margin: 3vw;
+    display: block;
+    background-color: inherit;
+    border: none;
+    border-radius: 50px;
+    width: 5vw;
+    height: 3vh;
+    color: var(--pc);
+    font-size: 15px;
+    margin-top: 3vh;
+    cursor: pointer;
+}
+.fourth--section .swiper .item button:hover{
+    background-color: var(--pc);
+    color: white;
+    transform: scale(1.05);
+    transition: all 0.2s ease-in-out;
+}
+.fourth--section .swiper .item .ac{
+    background-color: var(--acf);
+    border: 4px inherit solid;
+    width: 9vw;
+    height: 4vh;
+    margin-right: 2vw;
+    color:white;
+}
+footer {
+    min-height: 6vh;
+    background-color: #dee0e3;
+    color: var(--pk);
+    font-weight: 100;
+    font-size: 13px;
+    display: flex;
+    align-items: center;     
+    justify-content: center; 
+    text-align: center;
+
+    opacity: 0.6;
 }

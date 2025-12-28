@@ -7,6 +7,8 @@
 }
 
 *{
+
+    scroll-behavior: smooth;
     margin: 0;
     padding: 0;
 }
@@ -25,18 +27,92 @@ body {
  font-family: 'Inter', system-ui, sans-serif;
 }
 header{
-    height: 120vh;
+    height: 920px;
 }
-.background__img{
+
+/* --- фикс для мобильной версии: чтобы футер и контент были доступны --- */
+@media (max-width: 768px) {
+  /* header должен быть позиционированным контейнером */
+  header {
+    position: relative;
+    height: auto !important;
+    min-height: 60vh;        /* минимальная высота, можно регулировать */
+    overflow: visible;       /* чтобы абсолютные дети не обрезались */
+  }
+
+  /* делаем фразу частью потока — не будет перекрытий и не будет выбрасывать контент за пределы */
+  .header__phrase {
+    position: static !important;
+    margin:10vh 0 0 0 !important;
+    padding: 0 !important;
+    transform: none;
+    text-align: center;
+    font-size: 2rem; /* подкорректируй под свой дизайн */
+
+  }
+
+  /* прячем большую фон-картинку на мобилках (если хочешь — можно заменить на display:block + уменьшить) */
+  .background__img {
+    display: none !important;
+    width: auto;
+    left: auto;
+    transform: none;
+  }
+
+  /* важная страховка: позволяем вертикальный скролл */
+  html, body {
+    height: auto;
+    overflow-y: auto;
+  }
+
+
+}
+
+/* .background__img{
     /* display: none; */
+/* 
     position: absolute;
     z-index: -10;
     padding-left: 30vw;
+} */
+ .background__img {
+    position: absolute;
+    z-index: -10;
+    left: 50%;
+    transform: translateX(-20%);
+    max-width: 100%;
+    height: auto;
 }
 a{
     text-decoration: none;
     color:inherit
 }
+.header__nav--burger{
+    display: none;
+    background-color: inherit;
+    border: none;
+    cursor: pointer;
+    width: fit-content;
+    height: auto;
+}
+@media (max-width: 768px)  {
+     .background__img{
+        width: 100%;
+        left: 0;
+        transform: unset;
+     }
+    .header__nav--burger{
+    display: unset;
+    
+    }
+    .nav__item{
+        display: none;
+    }
+    .header__logo{
+        display: none;
+    }
+}
+
 nav{
     color:var(--lg);
     background-color:var(--pc);
@@ -65,15 +141,24 @@ nav ul{
 .header__phrase{
     display: flex;
     flex-direction: column;
- 
     position: absolute;
     margin-top: 45vh;
     margin-left: 14vw;
-    color:#415167;
-    font-weight: 1500;
-    font-size: 4em;
-    
+    color: var(--pc);
+    font-weight: 700;
+    font-size: 4rem;
 }
+@media (max-width: 1024px) {
+    .header__phrase{
+        font-size: 3rem;
+    }
+}
+@media (max-width: 768px) {
+    .header__phrase{
+        font-size: 2rem;
+    }
+}
+
 .header__phrase--rev{
     color:var(--acf);
     
@@ -93,19 +178,48 @@ nav ul{
     font-weight: 500;
     font-size: 20px;
 }
-.section--first h2{
-    color:var(--pc);
-    font-weight: 100000;
-    font-size: 40px;
 
+.section--first h2{
+    color: var(--pc);
+    font-weight: 700;
+    font-size: 40px;
     padding-top: 1vh;
 }
+@media (max-width: 1024px) {
+    .section--first h3{
+        font-size: 18px;
+    }
+
+    .section--first h2{
+        font-size: 32px;
+    }
+}
+@media (max-width: 768px) {
+    .section--first h3{
+        font-size: 16px;
+    }
+
+    .section--first h2{
+        font-size: 26px;
+    }
+}
+
+
 .section--first ul{
     list-style: none;
     margin: 15vh;
     margin-top: 10vh;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+@media (max-width: 768px) {
+.section--first ul{
+    margin: 5vh;
+    grid-template-columns:unset;
+    grid-template-areas: 
+    "a b"
+    "c d";
+}
 }
 .section--first ul li{
     padding: 2vw;
@@ -116,8 +230,8 @@ nav ul{
     background: linear-gradient(
     to right,
     var(--pc) 0%,
-    var(--pc) 25%,
-    var(--lg) 25%,
+    var(--pc) 18%,
+    var(--lg) 18%,
     var(--lg) 100%
   );
 }
@@ -126,13 +240,32 @@ nav ul{
     font-weight: 500;
     font-size: 20px;
 }
-.second--section h2{
-    color:var(--pc);
-    font-weight: 100000;
-    font-size: 40px;
 
+.second--section h2{
+    color: var(--pc);
+    font-weight: 700; 
+    font-size: 40px;
     padding-top: 1vh;
 }
+@media (max-width: 1024px) {
+    .second--section h3{
+        font-size: 18px;
+    }
+
+    .second--section h2{
+        font-size: 32px;
+    }
+}
+@media (max-width: 768px) {
+    .second--section h3{
+        font-size: 16px;
+    }
+
+    .second--section h2{
+        font-size: 26px;
+    }
+}
+
 
 .second--section .swiper{
     margin: 5vw;
@@ -145,13 +278,22 @@ nav ul{
     "a b"
     "c d";
 }
+@media (max-width: 768px){
+    .second--section .swiper{
+        margin-left: 3vw;
+    grid-template-areas: 
+    "a"
+    "b"
+    "c"
+    "d";}
+}
 .second--section .swiper .item{
     display: flex;
     background: white;
     border: 4px var(--acf) solid;
     padding: 4px;
     border-radius: 12px;
-    width: max-content;
+
 }
 .second--section .swiper .item img{
     background-color: #d5d7dc;
@@ -167,20 +309,90 @@ nav ul{
 .second--section .swiper .item .name{
     color:black;
     font-size: 30px;
-    font-weight: 10000;
+    font-weight: 700;
     padding-bottom: 3vh;
 }
 .second--section .swiper .item button{
     background-color: inherit;
     border: none;
-    border-radius: 50px;
-    width: 5vw;
-    height: 3vh;
+    border-radius: 50px; /* НЕ ТРОГАЕМ */
+    
+    padding: 8px 16px;      /* форма кнопки */
+    min-height: 40px;       /* чтобы не схлопывалась */
+    min-width: 90px;        /* чтобы не была круглой */
+
     color: var(--pc);
     font-size: 15px;
     margin-top: 3vh;
     cursor: pointer;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
+
+@media (max-width: 1024px) {
+
+    .second--section .swiper .item .item-description{
+        padding: 2vw;
+    }
+
+    .second--section .swiper .item .price{
+        font-size: 22px;
+    }
+
+    .second--section .swiper .item .name{
+        font-size: 26px;
+        padding-bottom: 2vh;
+    }
+
+    .second--section .swiper .item button{
+        font-size: 14px;
+        margin-top: 2vh;
+    }
+}
+@media (max-width: 768px) {
+
+    .second--section .swiper .item .item-description{
+        padding: 16px;
+    }
+
+    .second--section .swiper .item .price{
+        font-size: 20px;
+    }
+
+    .second--section .swiper .item .name{
+        font-size: 22px;
+        padding-bottom: 1.5vh;
+    }
+
+    .second--section .swiper .item button{
+        font-size: 13px;
+        margin-top: 1.5vh;
+    }
+}
+@media (max-width: 480px) {
+
+    .second--section .swiper .item .item-description{
+        padding: 12px;
+    }
+
+    .second--section .swiper .item .price{
+        font-size: 18px;
+    }
+
+    .second--section .swiper .item .name{
+        font-size: 20px;
+        padding-bottom: 1vh;
+    }
+
+    .second--section .swiper .item button{
+        font-size: 12px;
+        margin-top: 1vh;
+    }
+}
+
 .second--section .swiper .item button:hover {
     background-color: var(--pc);
     color: white;
@@ -242,6 +454,11 @@ nav ul{
 .accordion img{
     padding-top: 5vh;
     padding-right: 7vw;
+}
+@media (max-width:768px){
+    .accordion img{
+        display: none;
+    }
 }
 .accordion .price{
     padding-top: 5vh;
@@ -357,6 +574,14 @@ nav ul{
     grid-template-areas: 
     "a b c";
 }
+@media (max-width: 768px){
+    .fourth--section .swiper{
+    grid-template-areas: 
+    "a"
+    "b"
+    "c"
+    "d";}
+}
 .fourth--section .swiper .item{
     display: flex;
     flex-direction: column;
@@ -418,6 +643,105 @@ nav ul{
     margin-right: 2vw;
     color:white;
 }
+@media (max-width: 1024px) {
+    .fourth--section h3{
+        font-size: 18px;
+    }
+
+    .fourth--section h2{
+        font-size: 32px;
+        margin-bottom: 4vh;
+    }
+
+    .fourth--section .swiper .item .item-description{
+        padding: 1.5vw;
+        margin-left: 1.5vw;
+    }
+
+    .fourth--section .swiper .item .price{
+        font-size: 22px;
+        margin-top: 2vh;
+        margin-left: 2vw;
+    }
+
+    .fourth--section .swiper .item .name{
+        font-size: 26px;
+        padding-bottom: 2vh;
+    }
+
+    .fourth--section .swiper .item button{
+        font-size: 14px;
+        margin: 2vw;
+        margin-top: 2vh;
+    }
+}
+
+@media (max-width: 768px) {
+    .fourth--section h3{
+        font-size: 16px;
+    }
+
+    .fourth--section h2{
+        font-size: 26px;
+        margin-bottom: 3vh;
+    }
+
+    .fourth--section .swiper .item .item-description{
+        padding: 16px;
+        margin-left: 12px;
+    }
+
+    .fourth--section .swiper .item .price{
+        font-size: 20px;
+        margin-top: 1.5vh;
+        margin-left: 12px;
+    }
+
+    .fourth--section .swiper .item .name{
+        font-size: 22px;
+        padding-bottom: 1.5vh;
+    }
+
+    .fourth--section .swiper .item button{
+        font-size: 13px;
+        margin: 16px;
+        margin-top: 1.5vh;
+    }
+}
+
+@media (max-width: 480px) {
+    .fourth--section h3{
+        font-size: 14px;
+    }
+
+    .fourth--section h2{
+        font-size: 22px;
+        margin-bottom: 2vh;
+    }
+
+    .fourth--section .swiper .item .item-description{
+        padding: 12px;
+        margin-left: 10px;
+    }
+
+    .fourth--section .swiper .item .price{
+        font-size: 18px;
+        margin-top: 1vh;
+        margin-left: 10px;
+    }
+
+    .fourth--section .swiper .item .name{
+        font-size: 20px;
+        padding-bottom: 1vh;
+    }
+
+    .fourth--section .swiper .item button{
+        font-size: 12px;
+        margin: 12px;
+        margin-top: 1vh;
+    }
+}
+
 footer {
     min-height: 6vh;
     background-color: #dee0e3;

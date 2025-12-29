@@ -12,16 +12,16 @@
     margin: 0;
     padding: 0;
 }
-/* Способ 1: Google Fonts */
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-/* Способ 2: Загрузка и импорт */
+
 @font-face {
  font-family: 'CustomFont';
  src: url('../assets/fonts/custom-font.woff2') format('woff2');
  font-weight: 400;
  font-display: swap;
 }
-/* Применение шрифтов */
+
 body {
     background-color: var(--lg);
  font-family: 'Inter', system-ui, sans-serif;
@@ -30,28 +30,24 @@ header{
     height: 920px;
 }
 
-/* --- фикс для мобильной версии: чтобы футер и контент были доступны --- */
 @media (max-width: 768px) {
-  /* header должен быть позиционированным контейнером */
   header {
     position: relative;
     height: auto !important;
-    min-height: 60vh;        /* минимальная высота, можно регулировать */
-    overflow: visible;       /* чтобы абсолютные дети не обрезались */
+    min-height: 60vh;      
+    overflow: visible;      
   }
 
-  /* делаем фразу частью потока — не будет перекрытий и не будет выбрасывать контент за пределы */
   .header__phrase {
     position: static !important;
     margin:10vh 0 0 0 !important;
     padding: 0 !important;
     transform: none;
     text-align: center;
-    font-size: 2rem; /* подкорректируй под свой дизайн */
+    font-size: 2rem; 
 
   }
 
-  /* прячем большую фон-картинку на мобилках (если хочешь — можно заменить на display:block + уменьшить) */
   .background__img {
     display: none !important;
     width: auto;
@@ -59,7 +55,7 @@ header{
     transform: none;
   }
 
-  /* важная страховка: позволяем вертикальный скролл */
+
   html, body {
     height: auto;
     overflow-y: auto;
@@ -68,13 +64,7 @@ header{
 
 }
 
-/* .background__img{
-    /* display: none; */
-/* 
-    position: absolute;
-    z-index: -10;
-    padding-left: 30vw;
-} */
+
  .background__img {
     position: absolute;
     z-index: -10;
@@ -89,13 +79,69 @@ a{
 }
 .header__nav--burger{
     display: none;
-    background-color: inherit;
+    align-items: center;
+    justify-content: center;
+
+    width: 44px;     
+    height: 44px;
+    padding: 0;
+
+    background: none;
     border: none;
     cursor: pointer;
-    width: fit-content;
-    height: auto;
+
+    position: relative;
 }
+.header__nav--burger::before{
+    content: "";
+    position: absolute;
+    inset: 0;         
+}
+.burger--icon{
+    width: 32px;
+    height: 32px;
+    pointer-events: none;
+    display: block;
+}
+
 @media (max-width: 768px)  {
+    .nav{
+    color:var(--lg);
+    background-color:var(--pc);
+    display: flex;
+    flex-direction: row;
+    gap:40px;
+    padding: 40px;
+    height: fit-content;
+    justify-content: space-between;
+}
+    .nav__list {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 10vh;
+    border: 2px var(--acf) solid;
+    border-radius: 10px;
+    background-color: var(--pc);
+    color: var(--acf);
+    width: fit-content;
+    padding: 10px;
+
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.3s ease;
+    opacity: 0;
+    pointer-events: none; 
+}
+    .nav ul{
+        gap:20px
+    }
+    .nav__list.show {
+    transform: scaleY(1);
+    opacity: 1;
+    pointer-events: auto;
+}
+
      .background__img{
         width: 100%;
         left: 0;
@@ -105,9 +151,7 @@ a{
     display: unset;
     
     }
-    .nav__item{
-        display: none;
-    }
+    
     .header__logo{
         display: none;
     }
@@ -128,9 +172,15 @@ nav ul{
     flex-direction: row;
     gap: 40px;
     width: 100%;
+    padding: 10px;
 }
 .nav__item:hover{
     color:var(--acf)
+}
+.nav__item > a{
+    display: block;
+    width: 100%;
+    padding:5px 0 5px 0;
 }
 .nav__link{
     height: fit-content;
@@ -315,11 +365,11 @@ nav ul{
 .second--section .swiper .item button{
     background-color: inherit;
     border: none;
-    border-radius: 50px; /* НЕ ТРОГАЕМ */
+    border-radius: 50px; 
     
-    padding: 8px 16px;      /* форма кнопки */
-    min-height: 40px;       /* чтобы не схлопывалась */
-    min-width: 90px;        /* чтобы не была круглой */
+    padding: 8px 16px;    
+    min-height: 40px;       
+    min-width: 90px;      
 
     color: var(--pc);
     font-size: 15px;
@@ -451,6 +501,20 @@ nav ul{
 
     margin: 10vh 10vw 0 10vw;
 }
+@media (max-width:768px){
+.accordion{
+    padding: 3vw;
+    margin: 10vh 5vw 0 5vw;
+    background: linear-gradient(
+        to right,
+    white 0%,
+    white 25%,
+    white 25%,
+    white 100%
+    );
+    ;
+}
+}
 .accordion img{
     padding-top: 5vh;
     padding-right: 7vw;
@@ -484,6 +548,8 @@ nav ul{
 
     cursor: pointer;
 }
+
+
 .accordion__item button:hover {
     background-color: var(--pc);
     color: white;
@@ -518,6 +584,17 @@ nav ul{
     "a"
     "b"
     "c";
+}
+@media (max-width:768px){
+    .slide-buttons{
+    margin-left: 3vw;
+    display: grid;
+    min-width: 20vw;
+    grid-area: 
+    "a"
+    "b"
+    "c";
+}
 }
 .slide-buttons button{
     background-color: #e2e5ea;

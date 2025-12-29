@@ -9,10 +9,13 @@
 <body>
     <header class="header">
         <nav class="header__nav nav">
-            <button class="header__nav--burger"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
-  <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
-</svg></button>
-            <ul class="nav_list">
+            <button class="header__nav--burger" aria-label="menu" id="burger--button">
+  <svg class="burger--icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="32" height="34" fill="currentColor">
+    <path d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
+  </svg>
+</button>
+
+            <ul class="nav__list">
                 <li class="nav__item">
                     <a href="#Coffee">Coffee</a>
                 </li>
@@ -28,7 +31,7 @@
                 
             </ul>
             <a class="nav__link" href="">
-                <svg xmlns="http://www.w3.org/2000/svg" width="54" height="54" fill="currentColor" class="bi bi-cart" viewBox="0 0 32 32">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="34" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
                     <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
                 </svg>
 
@@ -227,4 +230,17 @@ phê tinh khiết chỉ dành riêng cho bạn</div>
         <h3>© Revo Coffee Việt Nam - 2018</h3>
     </footer>
 </body>
+<script>
+const burger = document.querySelector(".header__nav--burger");
+const navList = document.querySelector(".nav__list");
+
+burger.addEventListener("click", () => {
+  if (navList.classList.contains("show")) {
+    navList.classList.remove("show");
+  } else {
+    navList.classList.add("show");
+  }
+});
+        
+</script>
 </html>

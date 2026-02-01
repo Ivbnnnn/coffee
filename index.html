@@ -5,10 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coffe e-shop</title>
     <link rel="stylesheet" href="style.css">
+    <script src="menu.js" defer></script>
 </head>
 <body>
-    <header class="header">
-        <nav class="header__nav nav">
+    <div class="scroll_to_top hidden">
+        <button class="scroll_button ">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-arrow-up-circle" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707z"/>
+</svg>
+        </button>
+    </div>
+    <nav class="header__nav nav">
             <button class="header__nav--burger" aria-label="menu" id="burger--button">
   <svg class="burger--icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="32" height="34" fill="currentColor">
     <path d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
@@ -38,6 +45,8 @@
             </a>
             
         </nav>
+    <header class="header">
+        
         <a href="#" class="header__logo">
                 <img src="Кофе\LOGO.png" alt="logo">
         </a>
@@ -178,7 +187,7 @@ phê tinh khiết chỉ dành riêng cho bạn</div>
                     </div>
                 </div>
                 <div class="slide-buttons">
-                    <button>1</button>
+                    <button class="selected">1</button>
                     <button>2</button>
                     <button>3</button>
                 </div>
@@ -230,17 +239,5 @@ phê tinh khiết chỉ dành riêng cho bạn</div>
         <h3>© Revo Coffee Việt Nam - 2018</h3>
     </footer>
 </body>
-<script>
-const burger = document.querySelector(".header__nav--burger");
-const navList = document.querySelector(".nav__list");
 
-burger.addEventListener("click", () => {
-  if (navList.classList.contains("show")) {
-    navList.classList.remove("show");
-  } else {
-    navList.classList.add("show");
-  }
-});
-        
-</script>
 </html>

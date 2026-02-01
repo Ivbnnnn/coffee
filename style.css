@@ -29,6 +29,14 @@ body {
 header{
     height: 920px;
 }
+.header__nav.nav {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  padding: 20px 40px;
+
+}
+
 
 @media (max-width: 768px) {
   header {
@@ -84,35 +92,42 @@ a{
 
     width: 44px;     
     height: 44px;
-    padding: 0;
 
+    
     background: none;
     border: none;
     cursor: pointer;
 
-    position: relative;
+    
 }
-.header__nav--burger::before{
-    content: "";
-    position: absolute;
-    inset: 0;         
-}
+
 .burger--icon{
     width: 32px;
     height: 32px;
     pointer-events: none;
     display: block;
+
 }
 
 @media (max-width: 768px)  {
+    .header__nav.nav{
+        border-radius: 20px;
+    position: fixed;
+    top: 10px;
+    left: 20px;
+    right: 20px;
+    z-index: 9999;
+    background: var(--pc); /* или белый, чтобы перекрывать фон */
+  }
     .nav{
+    
     color:var(--lg);
     background-color:var(--pc);
     display: flex;
     flex-direction: row;
     gap:40px;
-    padding: 40px;
-    height: fit-content;
+    padding: 20px 40px;
+
     justify-content: space-between;
 }
     .nav__list {
@@ -148,6 +163,7 @@ a{
         transform: unset;
      }
     .header__nav--burger{
+        
     display: unset;
     
     }
@@ -200,11 +216,18 @@ nav ul{
 }
 @media (max-width: 1024px) {
     .header__phrase{
+
         font-size: 3rem;
     }
 }
 @media (max-width: 768px) {
+    .header{
+        margin-top: 200px;
+        height: 320px;
+
+    }
     .header__phrase{
+
         font-size: 2rem;
     }
 }
@@ -344,8 +367,11 @@ nav ul{
     padding: 4px;
     border-radius: 12px;
 
+
 }
 .second--section .swiper .item img{
+
+    border-radius: 12px;
     background-color: #d5d7dc;
 }
 .second--section .swiper .item .item-description{
@@ -540,13 +566,19 @@ nav ul{
     background-color: inherit;
     border: none;
     border-radius: 50px;
-    width: 5vw;
+    width: fit-content;
     height: 3vh;
     color: var(--pc);
     font-size: 15px;
+    
+    padding: 0 9px;
     margin-top: 13vh;
-
     cursor: pointer;
+}
+@media (max-width:768px){
+    .accordion__item button{
+        margin-top: 3vh;
+    }
 }
 
 
@@ -565,8 +597,10 @@ nav ul{
 .accordion__item button.ac{
     background-color: var(--acf);
     border: 4px inherit solid;
-    width: 9vw;
+    width: fit-content;
+    padding: 0 9px;
     height: 4vh;
+    margin-top: 13vh;
     margin-right: 10vw;
     color:white;
 }
@@ -596,6 +630,15 @@ nav ul{
     "c";
 }
 }
+.selected{
+    background-color: var(--pc) !important;
+    color: white !important;
+    cursor: pointer;
+    color:var(--pc);
+    border-left: 1px rgb(198, 198, 198) solid ;
+    transform: scale(1.05);
+    transition: all 0.2s ease-in-out;
+}
 .slide-buttons button{
     background-color: #e2e5ea;
     cursor: pointer;
@@ -611,12 +654,7 @@ nav ul{
     transform: scale(1.05);
     transition: all 0.2s ease-in-out;
 }
-.slide-buttons button:first-child{
-    background-color: white !important;
-    cursor: pointer;
-    color:var(--pc);
-    border-left: 1px rgb(198, 198, 198) solid ;
-}
+
 
 .fourth--section{
     padding: 5vw;
@@ -663,11 +701,12 @@ nav ul{
     display: flex;
     flex-direction: column;
     background: white;
-    
+    overflow: hidden;
     border-radius: 12px;
     text-align: left;    
-}
+} 
 .fourth--section .swiper .item img{
+    object-fit: cover;
     background-color: #d5d7dc;
 }
 .fourth--section .swiper .item .item-description{
@@ -699,11 +738,12 @@ nav ul{
     background-color: inherit;
     border: none;
     border-radius: 50px;
-    width: 5vw;
-    height: 3vh;
+    width: fit-content;
+    height: 4vh;
     color: var(--pc);
     font-size: 15px;
-    margin-top: 3vh;
+    
+    padding: 0 9px;
     cursor: pointer;
 }
 .fourth--section .swiper .item button:hover{
@@ -715,8 +755,9 @@ nav ul{
 .fourth--section .swiper .item .ac{
     background-color: var(--acf);
     border: 4px inherit solid;
-    width: 9vw;
-    height: 4vh;
+    width: fit-content;
+   
+    padding: 0 9px;
     margin-right: 2vw;
     color:white;
 }
@@ -815,6 +856,7 @@ nav ul{
     .fourth--section .swiper .item button{
         font-size: 12px;
         margin: 12px;
+        padding: 4px;
         margin-top: 1vh;
     }
 }
@@ -831,4 +873,34 @@ footer {
     text-align: center;
 
     opacity: 0.6;
+}
+
+.hidden {
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+  transition: 0.3s;
+}
+
+.scroll_to_top{
+    z-index: 1000;
+    position: fixed;
+    bottom: 3%;
+    right: 6%;
+}
+
+
+
+
+.scroll_button{
+    background: none;
+    border: none;
+}
+
+.scroll_button:hover{
+    color:#151D28;
+}
+.scroll_button>svg{
+    border-radius:12px ;
+    background-color: #d3d8df;
 }

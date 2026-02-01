@@ -24,7 +24,8 @@ window.addEventListener('scroll', () => {
 
 scroll_button.addEventListener('click',(event)=>{
     event.preventDefault()
-    window.scrollTo(top)
+    window.scrollTo({top:0, behavior: 'smooth'}
+)
 })
 
 const slide_buttons = document.querySelectorAll('.slide-buttons > button')
